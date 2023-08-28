@@ -39,7 +39,6 @@
 
   <body>
 
-
 <div id="wrap">
 
 <div class="container">
@@ -292,4 +291,36 @@
     <script src="./lib/bootstrap-carousel.js.download"></script>
     <script src="./lib/bootstrap-typeahead.js.download"></script> -->
 
-</body></html>
+</body>
+
+<script>
+    const setFavicon = function (url) {
+        const favicon = document.querySelector('link[rel="icon"]');
+        // favicon.setAttribute('id', 'favicon');
+        if (favicon) {   
+            favicon.href = url;
+        } else {  
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = url;
+            link.id = 'favicon';   
+            document.head.appendChild(link);
+            console.log(link);
+        }
+    };
+
+    const setEmojiFavicon = function (emoji) {
+        const canvas = document.createElement('canvas');
+        canvas.height = 64;
+        canvas.width = 64;
+        const context = canvas.getContext('2d');
+        context.font = '64px serif';
+        context.fillText(emoji, 0, 64);
+        const url = canvas.toDataURL();
+        setFavicon(url);
+    };
+
+    setEmojiFavicon('❤️');
+</script>
+
+</html>
