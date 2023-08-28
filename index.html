@@ -294,29 +294,31 @@
 </body>
 
 <script>
-    const setFavicon = function (url) {
+    // 设置图标为图片，传入地址即可
+    const setFavicon = function (url) {  // 找到 favicon 标签  
         const favicon = document.querySelector('link[rel="icon"]');
         // favicon.setAttribute('id', 'favicon');
-        if (favicon) {   
+        if (favicon) {    // 更新 favicon 图标    
             favicon.href = url;
-        } else {  
+        } else {    // 创建 link 标签    
             const link = document.createElement('link');
             link.rel = 'icon';
-            link.href = url;
-            link.id = 'favicon';   
+            link.href = url;    // 添加到 head 标签内 
+            // link.id = 'favicon';   
             document.head.appendChild(link);
             console.log(link);
         }
     };
 
-    const setEmojiFavicon = function (emoji) {
+    // 设置图标为其他的文字，传入文字
+    const setEmojiFavicon = function (emoji) {  // 创建 canvas 标签  
         const canvas = document.createElement('canvas');
         canvas.height = 64;
-        canvas.width = 64;
+        canvas.width = 64;  // 获取 canvas 上下文  
         const context = canvas.getContext('2d');
-        context.font = '64px serif';
-        context.fillText(emoji, 0, 64);
-        const url = canvas.toDataURL();
+        context.font = '54px serif';
+        context.fillText(emoji, 0, 54);  // 获取 emoji url  
+        const url = canvas.toDataURL();  // 更新 favicon  
         setFavicon(url);
     };
 
